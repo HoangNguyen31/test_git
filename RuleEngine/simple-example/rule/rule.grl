@@ -3,7 +3,15 @@ rule womanDiscount "It's Woman's day, discount 25%" salience 10 {
         User.Discount == "" && User.Gender == "WOMAN"
     then
         User.Discount = "25%";
-        Retract("womanDiscount");
+    Retract("womanDiscount");
+}
+
+rule diamondDiscount "Discount 30% for DIAMOND member" {
+    when
+        User.Discount == "" && User.Membership == "DIAMOND"
+    then
+        User.Discount = "30%";
+    Retract("diamondDiscount");
 }
 
 rule goldDiscount "Discount 15% for GOLD member" {
@@ -11,7 +19,7 @@ rule goldDiscount "Discount 15% for GOLD member" {
         User.Discount == "" && User.Membership == "GOLD"
     then
         User.Discount = "15%";
-        Retract("goldDiscount");
+    Retract("goldDiscount");
 }
 
 rule silverDiscount "Discount 15% for SILVER member" {
@@ -19,7 +27,7 @@ rule silverDiscount "Discount 15% for SILVER member" {
         User.Discount == "" && User.Membership == "SILVER"
     then
         User.Discount = "15%";
-        Retract("silverDiscount");
+    Retract("silverDiscount");
 }
 
 rule bronzeDiscount "Discount 5% for BRONZE member" {
@@ -27,5 +35,13 @@ rule bronzeDiscount "Discount 5% for BRONZE member" {
         User.Discount == "" && User.Membership == "BRONZE"
     then
         User.Discount = "5%";
-        Retract("bronzeDiscount");
+    Retract("bronzeDiscount");
+}
+
+rule newMember "Discount 30% for NEW member" {
+    when
+        User.Discount == "" && User.Membership == "NEW"
+    then
+        User.Discount = "30%";
+    Retract("newMember");
 }
